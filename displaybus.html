@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Buses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .filters label {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .filters select {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            min-width: 150px;
+        }
+        
+        .filters button {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .filters button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Bus List Container */
+        .bus-list {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* Travel Info */
+        #travelInfo {
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filters select {
+                width: 100%;
+            }
+            
+            .bus-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Bus Card Styles */
+.bus-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bus-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bus-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.bus-header h3 {
+    margin: 0;
+    color: var(--dark-color);
+    font-size: 1.3rem;
+}
+
+.bus-type {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.bus-details {
+    margin-bottom: 1.5rem;
+}
+
+.bus-details p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #27a35a;
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+      <div class="filters">
+        <label for="busType">Bus Type:</label>
+        <select id="busType">
+          <option value="">-- Select Bus Type --</option>
+          <option value="AC">AC</option>
+          <option value="Non-AC">Non-AC</option>
+        </select>
+
+        <label for="seatType">Seat Type:</label>
+        <select id="seatType">
+          <option value="">-- Select Seat Type --</option>
+          <option value="Sleeper">Sleeper</option>
+          <option value="Seater">Seater</option>
+        </select>
+
+        <button onclick="applyFilters()">Apply</button>
+      </div>
+    </div>
+
+    <div id="travelInfo"></div>
+
+    <div class="bus-list" id="busList"></div>
+
+    <script src="displaybus.js"></script>
+</body>
+</html>

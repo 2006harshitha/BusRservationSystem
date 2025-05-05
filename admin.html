@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Reservation Admin Panel</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header>Bus Reservation Admin Panel</header>
+
+    <div class="admin-container">
+      <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="#" onclick="showSection('dashboard')">Dashboard</a>
+        <a href="#" onclick="showSection('buses')">Manage Buses</a>
+        <a href="#" onclick="showSection('bookings')">Users Info</a>
+        <a href="#" onclick="showSection('logout')">Logout</a>
+      </div>
+
+      <div class="main-content">
+        <div id="dashboard" class="section">
+          <h3 class="section-title">Welcome to the Admin Dashboard</h3>
+          <div class="showbus"></div>
+          <p>Here you can manage buses, routes, bookings, and more.</p>
+        </div>
+
+        <div id="buses" class="section" style="display: none">
+          <h3 class="section-title">Manage Buses</h3>
+          <form id="busForm">
+            <label for="busId">Bus ID:</label>
+            <input type="number" id="busId" required />
+
+            <label for="busName">Bus Name:</label>
+            <input type="text" id="busName" required />
+
+            <label for="origin">Origin:</label>
+            <input type="text" id="origin" required />
+
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" required />
+
+            <label for="stops">Stops (comma-separated):</label>
+            <input type="text" id="stops" required />
+
+            <label for="startTime">Start Time:</label>
+            <input type="time" id="startTime" required />
+
+            <label for="endTime">End Time:</label>
+            <input type="time" id="endTime" required />
+
+            <label for="busType">Bus Type:</label>
+            <select id="busType" required>
+              <option value="">Select Type</option>
+              <option value="AC">AC</option>
+              <option value="Non-AC">Non-AC</option>
+            </select>
+
+            <label for="seatType">Seat Type:</label>
+            <select id="seatType" required>
+              <option value="">Select Type</option>
+              <option value="Seater">Seater</option>
+              <option value="Sleeper">Sleeper</option>
+            </select>
+
+            <label for="day">Day:</label>
+            <input type="text" id="day" placeholder="e.g., Monday" required />
+
+            <label for="totalSeats">Total Seats:</label>
+            <input type="number" id="totalSeats" required />
+
+            <label for="basePrice">Base Price:</label>
+            <input type="number" id="basePrice" required />
+
+            <button type="submit">Add Bus</button>
+          </form>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Bus ID</th>
+                <th>Bus Name</th>
+                <th>Bus Type</th>
+                <th>Capacity</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="busTableBody"></tbody>
+          </table>
+        </div>
+
+        <div id="bookings" class="section" style="display: none">
+          <h3 class="section-title">Manage Bookings</h3>
+          <div id="usersContainer"></div>
+          
+
+          
+
+          <div class="modal-overlay" id="modalOverlay"></div>
+          <div class="modal" id="detailsModal">
+            <h3>Booking Details</h3>
+            <p id="detailsContent"></p>
+            <button class="btn close-btn" onclick="closeModal()">Close</button>
+          </div>
+        </div>
+
+        <div id="logout" class="section" style="display: none">
+          <h3 class="section-title">Logout</h3>
+          <p>You have been logged out.</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
